@@ -8,15 +8,16 @@ import './StateCompo.css';
 
 class StateCompo extends Component{
     constructor(props){
-        super(props);
-        this.state ={name:''};
-        //this.handleChange = this.handelChange.bind(this);
-        
+        super(props)
+        this.state ={name:''}
     }
-    handleChange = event =>{
-       this.setState({name: event.target.value});
-       this.props.onInputChange(event.target.value);
-        
+    componentWillReceiveProps(){
+        console.log(`t'a recu un props qui est `,this.props);
+    }
+    handleChange = event => {
+       this.setState({name: event.target.value})
+       this.props.onInputChange(event.target.value)
+       // input's handler changements set and callback to parent component. everything i need here.
     }
     render(){
         

@@ -15,7 +15,6 @@ export function PureCompo(){
     )
 }
 export function PureCompoProps({label,fieldCompoState}){
-    console.log('props '+ fieldCompoState);
     return(
         <div>
             <h4 className="purProps_h4">Pure component with props {label} je recois {fieldCompoState} d'un autre composant</h4>

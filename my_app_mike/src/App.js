@@ -3,6 +3,7 @@ import './App.css';
 import {PureCompo,PureCompoProps} from './Components/PureCompo'
 import StateCompo from './Components/StateCompo';
 import { Component } from 'react';
+import LifeCycleCompo from './Components/LifeCycleCompo';
 
 class App extends Component {
   constructor(props){
@@ -11,20 +12,26 @@ class App extends Component {
     this.onInputChange = this.onInputChange.bind(this)
   }
   onInputChange(val){
-    console.log('state=', this.state.name);
     this.setState({name: val})
-    console.log('valeur Oninput: '+ val);
   }
+ arrayLabel =["foxtrot","zoulou","tango"]
+ 
   render(){
     return (
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
+          <LifeCycleCompo/>
           <p>
           ReacTBoy ;) Edit <code>src/App.js</code> and save to reload.
           </p>
-            <PureCompo/>
-            <PureCompoProps label="zoulou" fieldCompoState={this.state.name}/>
+            {this.arrayLabel.map((labelInArray) => {
+                return <PureCompoProps key={labelInArray} label={labelInArray} fieldCompoState={this.state.name}/>
+            })}
+            
+            {this.state.name ? <PureCompo/> : <div/>}
+            
+            
             <StateCompo onInputChange={this.onInputChange} label="Issou" />
           <a
             className="App-link"
