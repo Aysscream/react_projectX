@@ -23,8 +23,8 @@ class StateCompo extends Component{
         
         return(
             <div>
-                <h3 className="state_h3">Wech pelo t'a un state et un props: {this.props.label}</h3>
-                <label htmlFor="toto">entrez un nom</label> <br/>
+                <h3 className="state_h3">Projet X, veuillez entrez vôtre nom ci-dessous</h3>
+                <label htmlFor="toto">Nom</label> <br/>
                 <input name="toto" type='text' value={this.state.name} onChange={this.handleChange}/>
             </div>
         )

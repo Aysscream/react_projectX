@@ -4,6 +4,8 @@ import {PureCompo,PureCompoProps} from './Components/PureCompo'
 import StateCompo from './Components/StateCompo';
 import { Component } from 'react';
 import LifeCycleCompo from './Components/LifeCycleCompo';
+import FilterGames from './Components/game/FilterGames';
+
 
 class App extends Component {
   constructor(props){
@@ -14,33 +16,37 @@ class App extends Component {
   onInputChange(val){
     this.setState({name: val})
   }
- arrayLabel =["foxtrot","zoulou","tango"]
+ arrayLabel =["foxtrot"]
+
  
-  render(){
+ render(){
+  const ARRAY_GAMES=[];
+  ARRAY_GAMES.push({name:'Sekiro',category:'Adventure',stock:true,price:'55€'});
+  ARRAY_GAMES.push({name:'Call of',category:'FPS',stock:true,price:'65€'});
+  ARRAY_GAMES.push({name:'GTA 7',category:'adventure-action',stock:true,price:'40€'});
+  ARRAY_GAMES.push({name:'Rainbow six',category:'FPS',stock:true,price:'35€'});
+  ARRAY_GAMES.push({name:'battelField',category:'FPS',stock:false,price:'45€'});
+  ARRAY_GAMES.push({name:'Zelda',category:'aventure',stock:false,price:'35€'});
+  ARRAY_GAMES.push({name:'Uncharted 4',category:'adventure',stock:true,price:'40€'});
+  ARRAY_GAMES.push({name:'Fifa 2021',category:'Sport',stock:true,price:'65€'});
+  
+
     return (
       <div className="App">
+
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <LifeCycleCompo/>
-          <p>
-          ReacTBoy ;) Edit <code>src/App.js</code> and save to reload.
-          </p>
-            {this.arrayLabel.map((labelInArray) => {
+          <StateCompo onInputChange={this.onInputChange}/>
+          {this.arrayLabel.map((labelInArray) => {
                 return <PureCompoProps key={labelInArray} label={labelInArray} fieldCompoState={this.state.name}/>
             })}
-            
+          <img src={logo} className="App-logo" alt="logo" />
+                  <LifeCycleCompo/>
             {this.state.name ? <PureCompo/> : <div/>}
-            
-            
-            <StateCompo onInputChange={this.onInputChange} label="Issou" />
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
+            <div>
+            <FilterGames 
+              games={ARRAY_GAMES}
+            />
+        </div>
         </header>
       </div>
     );
