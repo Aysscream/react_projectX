@@ -12,7 +12,7 @@ class StateCompo extends Component{
         this.state ={name:''}
     }
     componentWillReceiveProps(){
-        console.log(`t'a recu un props qui est `,this.props);
+        console.log(`t'a recu un props:`,this.props);
     }
     handleChange = event => {
        this.setState({name: event.target.value})

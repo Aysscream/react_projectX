@@ -15,26 +15,21 @@ class GameRow extends Component{
     }
 
     render(){
-         let nameGame;
-         !this.props.game.stock ? nameGame = <span style={{color:'red'}}>{this.props.game.name}</span> : nameGame = this.props.game.name;
+         let price;
+         !this.props.game.stock ? price = <span style={{color:'red'}}>{this.props.game.price}</span> : price = this.props.game.price;
         /* if(!this.props.game.stock){
             nameGame = <span style={{color:'red'}}>{this.props.game.name}</span>;
          }else nameGame = this.props.game.name;*/
          
         return(
-            <tr>
+            <tr style={{'background-color': 'purple'}}>
                <td> 
-                    {nameGame}
+                    {this.props.game.name}
                </td>
                <td>
-                   {this.props.game.price}
+                   {price}
                </td>
-               <td>
-                   {this.props.game.stock ? 'en stock':'rupture de stock'} 
-               </td>
-               <td>
-                   {this.props.game.category} 
-               </td>
+             
 
             </tr>
         );

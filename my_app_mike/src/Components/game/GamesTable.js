@@ -15,39 +15,38 @@ class GamesTable extends Component{
     }
     
     render(){
-        const ARRAY_GAME_ROW= [];
+        const ARRAY_GAME_ROW = [];
+        let lastCat;
+
         this.props.games.map((jeu,key=0) => {
-            console.log('jeu MAPING',jeu);
-            ARRAY_GAME_ROW.push(<GameRow key={key+1} game={jeu}/>)
-        })
+                let jeuLower = jeu.name.toLowerCase();
+                if(jeuLower.indexOf(this.props.filterText.toLowerCase()) === -1){
+                   return ''
+                }else if(this.props.inStockOnly && !jeu.stock){
+                    return ''
+                }
+                console.log('category', jeu.category);
+                console.log('last CAt', lastCat);
+                if(jeu.category !== lastCat){
+                    ARRAY_GAME_ROW.push(<CategoryGames category={jeu.category}/>)
+                }
+                lastCat = jeu.category;
+                ARRAY_GAME_ROW.push(<GameRow key={key+1} game={jeu}/>)       
+        return ''})
         return(
-            <table style={{'border': '4px double purple'}}>
-                 <CategoryGames category='fps en dur'/>
+            <table >
                 <thead>
                     <th>Libelé</th>
                     <th>Prix</th>
-                    <th>Disponibilité</th>
-                    <th>Categorie</th>
-
+                
                 </thead>
                 
                 <tbody>
-                {ARRAY_GAME_ROW}
-
+                    {ARRAY_GAME_ROW}
                 </tbody>
-             {/* <table>
-                  <thead>
-                      <tr>
-                          <th colSpan="2">Les jeux</th>
-                      </tr>
-                  </thead>
-                  <tbody>
-                      <tr>
-                          <td>assassin's creed</td>
-                          <td>Sekiro</td>
-                      </tr>
-                  </tbody>
-              </table>*/} 
+                <tfoot>
+                    
+                </tfoot>
             </table>
         );
     }

@@ -21,13 +21,13 @@ class App extends Component {
  
  render(){
   const ARRAY_GAMES=[];
-  ARRAY_GAMES.push({name:'Sekiro',category:'Adventure',stock:true,price:'55€'});
+  ARRAY_GAMES.push({name:'GTA 7',category:'Action-Aventure',stock:true,price:'40€'});
   ARRAY_GAMES.push({name:'Call of',category:'FPS',stock:true,price:'65€'});
-  ARRAY_GAMES.push({name:'GTA 7',category:'adventure-action',stock:true,price:'40€'});
   ARRAY_GAMES.push({name:'Rainbow six',category:'FPS',stock:true,price:'35€'});
   ARRAY_GAMES.push({name:'battelField',category:'FPS',stock:false,price:'45€'});
-  ARRAY_GAMES.push({name:'Zelda',category:'aventure',stock:false,price:'35€'});
-  ARRAY_GAMES.push({name:'Uncharted 4',category:'adventure',stock:true,price:'40€'});
+  ARRAY_GAMES.push({name:'Sekiro',category:'Aventure',stock:true,price:'55€'});
+  ARRAY_GAMES.push({name:'Zelda',category:'Aventure',stock:false,price:'35€'});
+  ARRAY_GAMES.push({name:'Uncharted 4',category:'Aventure',stock:true,price:'40€'});
   ARRAY_GAMES.push({name:'Fifa 2021',category:'Sport',stock:true,price:'65€'});
   
 
@@ -35,12 +35,12 @@ class App extends Component {
       <div className="App">
 
         <header className="App-header">
+          <LifeCycleCompo/> 
           <StateCompo onInputChange={this.onInputChange}/>
           {this.arrayLabel.map((labelInArray) => {
                 return <PureCompoProps key={labelInArray} label={labelInArray} fieldCompoState={this.state.name}/>
             })}
           <img src={logo} className="App-logo" alt="logo" />
-                  <LifeCycleCompo/>
             {this.state.name ? <PureCompo/> : <div/>}
             <div>
             <FilterGames 

@@ -14,7 +14,7 @@ class CategoryGames extends Component{
     render(){
         return(
             <tr>
-                <th colSpan="2">{this.props.category}</th>
+                <th style={{'color':'purple'}} colSpan="2">{this.props.category}</th>
             </tr>
         );
     }

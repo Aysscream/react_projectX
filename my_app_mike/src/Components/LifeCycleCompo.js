@@ -8,11 +8,12 @@ import React,{Component} from 'react';
 class LifeCycleCompo extends Component{
     constructor(props){
         super(props);
-        this.state ={text:"voici le composent de Cyvle de vie .. salut... je vais me detruite.."}
+        this.state ={text:"voici le composent de Cyvle de vie .. salut... je vais me detruire.."}
     }
     componentDidMount(){
         console.log('le composant a été monté entierement');
-        setTimeout(()=>{this.setState({text:"..............."})},3000)
+        setTimeout(()=>{this.setState({text:"..............."})},4000)
+
 
     }
     /*UNSAFE_componentWillMount(){
